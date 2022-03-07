@@ -1,0 +1,6 @@
+{
+    "cmake.configureSettings": 
+    {
+        "OpenCV_DIR": "F:\\OpenCV\\opencv-4.5.2\\build\\Release\\install\\x64\\vc15\\lib"
+    }
+}

@@ -7,7 +7,7 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/videoio.hpp>
 
-#include "common/book.h"
+#include "../common/book.h"
 
 void cpu_grayscale(unsigned char *imdata, unsigned char *out, const int width, const int height)
 {
@@ -45,8 +45,12 @@ __global__ void gpu_grayscale(unsigned char* d_data, unsigned char* d_out, const
 int main(int argc, char** argv)
 {
     std::cout << "Hello" << std::endl;
+
+    std::string filepath = "me.jpg";
+    if (argc > 1)
+        filepath = argv[1];
     
-    cv::Mat img = cv::imread("../../me.jpg");
+    cv::Mat img = cv::imread(filepath);
     //cv::resize(img, img, cv::Size(360, 640));
     cv::Mat cpu_gray;
     cv::Mat gpu_gray;

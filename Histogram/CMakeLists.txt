@@ -1,30 +1,18 @@
 cmake_minimum_required(VERSION 3.15)
-project( HeatTransfer )
+project( hist )
 
-option(USE_CUDA "Use CUDA" ON)
+add_executable( ${PROJECT_NAME} main.cu )
+set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 
-# OpenCV
-find_package( OpenCV REQUIRED )
+target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} ${CMAKE_SOURCE_DIR}/common/lib/glut64.lib )
 
-# CUDA
-if (USE_CUDA)
-    find_package( CUDA )
-    if(CUDA_FOUND)
-        add_compile_definitions(WITH_CUDA)
-        #set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-gencode arch=compute_20,code=sm_20)
-    endif()
-endif()
+get_target_property(LINKED_LIBS ${PROJECT_NAME} LINK_LIBRARIES)
 
-if (USE_CUDA AND CUDA_FOUND)
-    enable_language( CUDA )
-    add_executable( HeatTransfer main.cu )
-    set_target_properties(HeatTransfer PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-endif()
+install(TARGETS ${PROJECT_NAME} CONFIGURATIONS Release RUNTIME DESTINATION ${CMAKE_SOURCE_DIR}/bin)
 
-target_link_libraries( HeatTransfer ${OpenCV_LIBS} ) 
-target_link_libraries( HeatTransfer ${OpenCV_LIBS} ${CMAKE_SOURCE_DIR}/lib/glut64.lib )
-
-get_target_property(LINKED_LIBS HeatTransfer LINK_LIBRARIES)
-message(STATUS "USE_CUDA: ${USE_CUDA}")
-message(STATUS "Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}")
-message(STATUS ${LINKED_LIBS})
+file(GLOB GLUT_DLLS ${CMAKE_SOURCE_DIR}/common/bin/*.dll)
+add_custom_command(TARGET ${PROJECT_NAME}
+                POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${GLUT_DLLS}
+                ${CMAKE_SOURCE_DIR}/bin)

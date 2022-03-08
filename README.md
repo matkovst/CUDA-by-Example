@@ -22,6 +22,7 @@ Some examples use *OpenCV* for image loading and saving.
 
 ## Requirements
 - **Windows** / **Linux**
+- **NVIDIA card** with compute capability greater or equal 1.1 and installed **CUDA Toolkit** for it
 - **C++11** ( or higher ) compiler
 - **CMake** >= 3.15
 - **OpenCV** >= 3.0

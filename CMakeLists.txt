@@ -8,6 +8,7 @@ if (NOT EXISTS ${CMAKE_BINARY_DIR}/CMakeCache.txt)
 endif()
 
 file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/output)
 
 # OpenCV
 find_package( OpenCV REQUIRED )
@@ -25,3 +26,8 @@ add_subdirectory(DotProduct)
 add_subdirectory(GrayScale)
 add_subdirectory(Histogram)
 add_subdirectory(HeatTransfer)
+add_subdirectory(JuliaSet)
+add_subdirectory(Mandelbrot)
+add_subdirectory(MatMul)
+add_subdirectory(RayTracing)
+add_subdirectory(Ripple)

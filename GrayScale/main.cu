@@ -112,12 +112,12 @@ int main(int argc, char** argv)
     // cv::imshow("CPU", cpu_gray);
     // cv::imshow("GPU", gpu_gray);
     // cv::waitKey();
-    cv::imwrite("gtruth.jpg", gtruth_gray);
-    cv::imwrite("cpu.jpg", cpu_gray);
-    cv::imwrite("gpu.jpg", gpu_gray);
-    std::cout << "GTruth result saved as gtruth.jpg" << std::endl;
-    std::cout << "CPU result saved as cpu.jpg" << std::endl;
-    std::cout << "GPU result saved as gpu.jpg" << std::endl;
+    cv::imwrite("output/gtruth.jpg", gtruth_gray);
+    cv::imwrite("output/cpu.jpg", cpu_gray);
+    cv::imwrite("output/gpu.jpg", gpu_gray);
+    std::cout << "GTruth result saved as output/gtruth.jpg" << std::endl;
+    std::cout << "CPU result saved as output/cpu.jpg" << std::endl;
+    std::cout << "GPU result saved as output/gpu.jpg" << std::endl;
 
     free(cpu_out);
     free(gpu_out);

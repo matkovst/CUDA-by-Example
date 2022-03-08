@@ -1,3 +1,4 @@
+![](data/doc/collage.png)
 # CUDA-by-Example
 
 Implemented for self-education working examples from "[CUDA by Example](https://developer.nvidia.com/cuda-example)" of Jason Sanders & Edward Kandrot. A little more personal samples also added here.</br>

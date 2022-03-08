@@ -7,8 +7,8 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/videoio.hpp>
 
-#include "common/book.h"
-#include "common/cpu_bitmap.h"
+#include "../common/book.h"
+#include "../common/cpu_bitmap.h"
 
 #define INF 2e10f
 #define DIM 512
@@ -110,6 +110,10 @@ int main(int argc, char** argv)
     HANDLE_ERROR( cudaEventDestroy(stop) );
 
 
+    cv::Mat bitmapMat = cv::Mat(DIM, DIM, CV_8UC4, bitmap.get_ptr()).clone();
+    cv::imwrite("output/gpu_ray_tracing.png", bitmapMat);
+    std::cout << "GPU result saved as output/gpu_ray_tracing.png" << std::endl;
+    
     bitmap.display_and_exit();
 
     HANDLE_ERROR(cudaFree(dev_bitmap));

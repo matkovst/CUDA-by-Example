@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cuda.h>
 #include <cuda_runtime.h>
+
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
@@ -174,8 +175,8 @@ int main(int argc, char** argv)
     cv::Mat cpu_out = cv::Mat(cv::Size(W, H), CV_32FC3, mbrot_data);
     cv::Mat cpu_to_save;
     cpu_out.convertTo(cpu_to_save, CV_8UC3, 255);
-    cv::imwrite("cpu_madnelbrot.jpg", cpu_to_save);
-    std::cout << "CPU Mandelbrot done. Img saved as cpu_madnelbrot.jpg." << std::endl;
+    cv::imwrite("output/cpu_madnelbrot.png", cpu_to_save);
+    std::cout << "CPU Mandelbrot done. Img saved as output/cpu_madnelbrot.png." << std::endl;
 
 
     // // CPU with cv::Mat
@@ -209,8 +210,8 @@ int main(int argc, char** argv)
     cv::Mat gpu_out = cv::Mat(cv::Size(W, H), CV_32FC3, h_mbrot_data);
     cv::Mat gpu_to_save;
     gpu_out.convertTo(gpu_to_save, CV_8UC3, 255);
-    cv::imwrite("gpu_madnelbrot.jpg", gpu_to_save);
-    std::cout << "GPU Mandelbrot done. Img saved as gpu_madnelbrot.jpg." << std::endl;
+    cv::imwrite("output/gpu_madnelbrot.png", gpu_to_save);
+    std::cout << "GPU Mandelbrot done. Img saved as output/gpu_madnelbrot.png." << std::endl;
 
     // Check if images are equal
     int loss = 0;

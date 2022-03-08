@@ -7,7 +7,7 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/videoio.hpp>
 
-#include "common/book.h"
+#include "../common/book.h"
 
 
 // CPU implementation -------------------------------------------------------------
@@ -135,8 +135,8 @@ int main(int argc, char** argv)
 
     std::cout << "CPU time: " << cpu_elapsed << std::endl;
     cv::Mat img = cv::Mat(DIM, DIM, CV_8UC3, data);
-    cv::imwrite("cpu_julia.jpg", img);
-    std::cout << "CPU result saved as cpu_julia.jpg" << std::endl;
+    cv::imwrite("output/cpu_julia.png", img);
+    std::cout << "CPU result saved as output/cpu_julia.png" << std::endl;
 
 
     // GPU
@@ -154,8 +154,8 @@ int main(int argc, char** argv)
 
     std::cout << "GPU time: " << gpu_elapsed << std::endl;
     cv::Mat gpu_img = cv::Mat(DIM, DIM, CV_8UC3, h_data);
-    cv::imwrite("gpu_julia.jpg", gpu_img);
-    std::cout << "GPU result saved as gpu_julia.jpg" << std::endl;
+    cv::imwrite("output/gpu_julia.png", gpu_img);
+    std::cout << "GPU result saved as output/gpu_julia.png" << std::endl;
 
     std::cout << "Bye" << std::endl;
     return 0;

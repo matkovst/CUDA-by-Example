@@ -17,6 +17,7 @@ Some examples use *OpenCV* for image loading and saving.
         <li>Heat transfer</li>
         <li>Histogram</li>
         <li>Grayscale</li>
+        <li>UnifiedMemory</li>
     </ul>
 <br><br>
 </details>

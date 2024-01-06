@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project( mandelbrot )
+project( UnifiedMemory )
 
-add_executable( ${PROJECT_NAME} main.cu )
+add_executable( ${PROJECT_NAME} main.cu cuda_funcs.h cuda_funcs.cu )
 set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 if(CMAKE_VERSION VERSION_GREATER_EQUAL "3.18.0" AND NOT CUDA_ARCHITECTURES)
     set_property(TARGET ${PROJECT_NAME} PROPERTY CUDA_ARCHITECTURES OFF)
